@@ -6,8 +6,6 @@
 //
 
 import Foundation
-//Objective: Develop a command-line tool that converts currency amounts between different currencies based on user input (e.g., USD to EUR).
-//Details: Ask the user for an amount in one currency and the target currency. Use predefined exchange rates (stored as constants) to perform the conversion and display the result.
 
 
 print("Enter currency (USD or BHD):")
