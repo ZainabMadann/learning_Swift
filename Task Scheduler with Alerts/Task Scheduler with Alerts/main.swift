@@ -19,16 +19,29 @@ struct Task {
     var isOverdue: Bool {
         return deadline < Date()
     }
+    var alreted = false
 }
 
 var list = [Task]()
-while true {
-    let option = Int(readLine() ?? "") ?? 0
+
+func chheckingDeadline(){
     for i in 0..<list.count {
-        if list[i].isOverdue == true{
+        if  !list[i].alreted && list[i].isOverdue == true  {
+            list[i].alreted = true
             print("your task : '\(list[i].taskName)' is overdue !!")
         }
     }
+}
+
+DispatchQueue.global(qos : .background ).async {
+    while true{
+        chheckingDeadline()
+        sleep(1)
+    }
+}
+
+while true {
+    let option = Int(readLine() ?? "") ?? 0
     switch (option) {
     case 1:
         print("ok enter your task :")
@@ -42,7 +55,7 @@ while true {
         let newTask = Task(taskName: taskName, taskStatus: "Incomplete" ,deadline: deadline)
         list.append(newTask)
     case 2:
-        print("enter the task name you want mask as complete")
+        print("enter the task name you want mark as complete")
         let taskName = readLine() ?? ""
           var taskFound = false
           for i in 0..<list.count {
@@ -66,4 +79,5 @@ while true {
     default:
         print("you entered wrong option")
     }
+    
 }
