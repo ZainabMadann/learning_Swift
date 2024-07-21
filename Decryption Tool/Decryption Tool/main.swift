@@ -60,3 +60,4 @@ func encrypt(content: String, key: Int) -> String {
 func decrypt(content: String, key: Int) -> String {
     return encrypt(content: content, key: 26 - key)
 }
+
